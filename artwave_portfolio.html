@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ArtWave Portfolio - プロフェッショナルアーティスト・デザイナーの作品集とブログ。オリジナルアート作品とグッズをオンラインショップで販売中。">
+    <meta property="og:title" content="ArtWave Portfolio - アート&デザイン作品集">
+    <meta property="og:description" content="クリエイティブな作品とデザインの世界へようこそ">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/000000/FFD700?text=ArtWave+Portfolio">
+    <title>ArtWave Portfolio - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --gold: #d4af37;
+            --light-gold: #f4e4c1;
+            --white: #ffffff;
+            --gray: #333333;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ナビゲーション */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10,10,10,0.8), rgba(51,51,51,0.6)), 
+                        url('https://via.placeholder.com/1920x1080/1a1a1a/d4af37?text=Creative+Masterpiece');
+            background-size: cover;
+            background-position: center;
+            animation: zoomIn 20s infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: var(--light-gold);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 2px solid var(--gold);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1;
+            background: var(--gray);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            color: var(--black);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: var(--gray);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-date {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content p {
+            color: #aaa;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: var(--light-gold);
+        }
+
+        /* Shop Banner */
+        .shop-banner {
+            background: linear-gradient(135deg, var(--gold), #b8941f);
+            padding: 5rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .shop-banner h2 {
+            color: var(--black);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .shop-banner p {
+            color: var(--gray);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .shop-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--black);
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 2px solid var(--black);
+        }
+
+        .shop-button:hover {
+            background: transparent;
+            color: var(--black);
+            border-color: var(--black);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+        }
+
+        .about-text h3 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #ccc;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* SNS Links */
+        .sns-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--gray);
+        }
+
+        .sns-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .sns-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .sns-icon:hover {
+            background: var(--light-gold);
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: var(--gray);
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--black);
+            border: 1px solid var(--gold);
+            color: var(--white);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--light-gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--gold);
+        }
+
+        footer p {
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                gap: 1.5rem;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">TAIGA</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>ART MEETS VISION</h1>
+            <p>クリエイティブの限界を超える</p>
+            <a href="#portfolio" class="cta-button">VIEW WORKS</a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2 class="section-title fade-in">LATEST WORKS</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in">
+                <img src="https://via.placeholder.com/600x600/2a2a2a/d4af37?text=Abstract+Art" alt="Abstract Art">
+                <div class="portfolio-overlay">
+                    <h3>Abstract Dreams</h3>
+                    <p>Digital Art / 2026</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://via.placeholder.com/600x600/1a1a1a/d4af37?text=Urban+Design" alt="Urban Design">
+                <div class="portfolio-overlay">
+                    <h3>Urban Symphony</h3>
+                    <p>Graphic Design / 2025</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://via.placeholder.com/600x600/3a3a3a/d4af37?text=Photography" alt="Photography">
+                <div class="portfolio-overlay">
+                    <h3>Golden Hour</h3>
+                    <p>Photography / 2025</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://via.placeholder.com/600x600/252525/d4af37?text=Illustration" alt="Illustration">
+                <div class="portfolio-overlay">
+                    <h3>Fantasy Realm</h3>
+                    <p>Illustration / 2026</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://via.placeholder.com/600x600/1f1f1f/d4af37?text=3D+Art" alt="3D Art">
+                <div class="portfolio-overlay">
+                    <h3>Dimension X</h3>
+                    <p>3D Art / 2026</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://via.placeholder.com/600x600/2f2f2f/d4af37?text=Mixed+Media" alt="Mixed Media">
+                <div class="portfolio-overlay">
+                    <h3>Hybrid Vision</h3>
+                    <p>Mixed Media / 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+        <h2 class="section-title fade-in">RECENT POSTS</h2>
+        <div class="blog-grid">
+            <div class="blog-card fade-in">
+                <img src="https://via.placeholder.com/400x250/1a1a1a/d4af37?text=Blog+Post+1" alt="Blog Post">
+                <div class="blog-content">
+                    <div class="blog-date">January 10, 2026</div>
+                    <h3>デジタルアートの未来</h3>
+                    <p>AIとクリエイティビティの融合が生み出す新しい表現の可能性について考察します...</p>
+                    <a href="#" class="read-more">READ MORE →</a>
+                </div>
+            </div>
+            <div class="blog-card fade-in">
+                <img src="https://via.placeholder.com/400x250/2a2a2a/d4af37?text=Blog+Post+2" alt="Blog Post">
+                <div class="blog-content">
+                    <div class="blog-date">January 5, 2026</div>
+                    <h3>カラーセオリーの基礎</h3>
+                    <p>効果的な配色で作品のインパクトを最大化するテクニックを解説します...</p>
+                    <a href="#" class="read-more">READ MORE →</a>
+                </div>
+            </div>
+            <div class="blog-card fade-in">
+                <img src="https://via.placeholder.com/400x250/252525/d4af37?text=Blog+Post+3" alt="Blog Post">
+                <div class="blog-content">
+                    <div class="blog-date">December 28, 2025</div>
+                    <h3>クリエイターのワークフロー</h3>
+                    <p>効率的な制作プロセスと創造性を両立させる方法をシェアします...</p>
+                    <a href="#" class="read-more">READ MORE →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Banner -->
+    <section id="shop" class="shop-banner">
+        <h2>EXCLUSIVE COLLECTION</h2>
+        <p>オリジナルアート作品とグッズをオンラインショップで販売中</p>
+        <a href="#" class="shop-button">VISIT SHOP</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title fade-in">ABOUT ME</h2>
+        <div class="about-content fade-in">
+            <img src="https://via.placeholder.com/600x500/1a1a1a/d4af37?text=Artist+Portrait" alt="Artist" class="about-image">
+            <div class="about-text">
+                <h3>アーティスト / デザイナー</h3>
+                <p>東京を拠点に活動するビジュアルアーティスト。デジタルとアナログを融合させた独自のスタイルで、感情と美学を表現しています。</p>
+                <p>国内外の展示会やコラボレーションを通じて、アートの可能性を探求し続けています。クライアントワークからパーソナルプロジェクトまで、幅広い領域で創造的な活動を展開中。</p>
+                <p>受賞歴：Tokyo Design Award 2024 / International Digital Art Prize 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SNS Section -->
+    <section class="sns-section">
+        <h2 class="section-title">FOLLOW ME</h2>
+        <div class="sns-links">
+            <a href="#" class="sns-icon" aria-label="Instagram">📷</a>
+            <a href="#" class="sns-icon" aria-label="Twitter">🐦</a>
+            <a href="#" class="sns-icon" aria-label="YouTube">▶️</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title fade-in">GET IN TOUCH</h2>
+        <form class="contact-form fade-in">
+            <div class="form-group">
+                <label for="name">お名前</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">お問い合わせ内容</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">SEND MESSAGE</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ArtWave Portfolio. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form Submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('お問い合わせありがとうございます！\n後ほどご連絡させていただきます。');
+            e.target.reset();
+        });
+
+        // Parallax Effect on Hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-bg');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
